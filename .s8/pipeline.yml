@@ -1,0 +1,24 @@
+---
+version: 1
+branches:
+  - match: "."
+    match_type: "regex"
+    config:
+      cloudformation:
+        Parameters:
+          - ParameterKey: Environment
+            ParameterValueVariable: base_branch
+          - ParameterKey: ArtifactBucketName
+            ParameterValueVariable: artifact_bucket_name
+          - ParameterKey: ArtifactBucketPath
+            ParameterValueVariable: artifact_bucket_path
+          - ParameterKey: Random8
+            ParameterValueVariable: random8
+  - match: "master"
+    config:
+      deploy_account_id: 456
+  - match: "dev"
+    config:
+      deploy_account_id: 12
+config:
+  build_account_id: 789

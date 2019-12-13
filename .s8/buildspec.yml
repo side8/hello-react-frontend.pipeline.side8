@@ -1,0 +1,23 @@
+---
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+      nodejs: 10
+    commands:
+      - pip install yamllint
+      - npm i
+  pre_build:
+    commands:
+      - yamllint cloudformation.yml .yamllint .s8/*.yml
+  build:
+    commands:
+      - npm run-script build
+      - sed -i 's/%SHA%/'"${CODEBUILD_BUILD_NUMBER}"'/g' cloudformation.yml
+
+artifacts:
+  files:
+    - cloudformation.yml
+    - build/**/*
