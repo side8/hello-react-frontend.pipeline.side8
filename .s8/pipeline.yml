@@ -14,11 +14,8 @@ branches:
             ParameterValueVariable: artifact_bucket_path
           - ParameterKey: Random8
             ParameterValueVariable: random8
-  - match: "master"
+  - match: "getting-started"
     config:
-      deploy_account_id: 456
-  - match: "dev"
-    config:
-      deploy_account_id: 12
+      deploy_account_id: "095432221598"
 config:
-  build_account_id: 789
+  build_account_id: "095432221598"
